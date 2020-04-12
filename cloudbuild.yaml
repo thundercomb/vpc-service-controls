@@ -1,0 +1,52 @@
+steps:
+- id: 'Terraform init'
+  name: 'hashicorp/terraform'
+  entrypoint: 'sh'
+  args:
+  - '-c'
+  - |
+     terraform init \
+       -backend-config="bucket=${PROJECT_ID}-terraform-state" \
+       -backend-config="prefix=${REPO_NAME}"
+  dir: /workspace/infra
+
+- id: 'Terraform plan'
+  name: 'hashicorp/terraform'
+  entrypoint: 'sh'
+  args:
+  - '-c'
+  - |
+     terraform plan \
+       -var-file="tfvars/terraform.tfvars"
+  dir: /workspace/infra
+  env:
+  - "TF_VAR_org_id=${_ORG_ID}"
+  - "GOOGLE_PROJECT=${PROJECT_ID}"
+  - "TF_VAR_analytics_project=${_ANALYTICS_PROJECT}"
+  - "TF_VAR_region=${_REGION}"
+  - "TF_VAR_billing_account=${_BILLING_ACCOUNT}"
+  - "TF_VAR_owner=${_OWNER}"
+  - "TF_VAR_owner_email=${_OWNER_EMAIL}"
+  - "TF_VAR_kubeflow_host=${_KUBEFLOW_HOST}"
+
+- id: 'Terraform apply'
+  name: 'hashicorp/terraform'
+  entrypoint: 'sh'
+  args:
+  - '-c'
+  - |
+     terraform apply \
+       -var-file="tfvars/terraform.tfvars" \
+       -auto-approve
+  dir: /workspace/infra
+  env:
+  - "TF_VAR_org_id=${_ORG_ID}"
+  - "GOOGLE_PROJECT=${PROJECT_ID}"
+  - "TF_VAR_analytics_project=${_ANALYTICS_PROJECT}"
+  - "TF_VAR_region=${_REGION}"
+  - "TF_VAR_billing_account=${_BILLING_ACCOUNT}"
+  - "TF_VAR_owner=${_OWNER}"
+  - "TF_VAR_owner_email=${_OWNER_EMAIL}"
+  - "TF_VAR_kubeflow_host=${_KUBEFLOW_HOST}"
+
+timeout: 1800s
