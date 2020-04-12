@@ -4,7 +4,6 @@ locals {
     "ml.googleapis.com",
     "artifactregistry.googleapis.com",
     "automl.googleapis.com",
-    "eu-automl.googleapis.com",
     "bigquery.googleapis.com",
     "bigtable.googleapis.com",
     "cloudasset.googleapis.com",
