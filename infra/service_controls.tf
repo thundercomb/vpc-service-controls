@@ -20,8 +20,8 @@ resource "google_access_context_manager_access_level" "default" {
 
 
 resource "google_access_context_manager_service_perimeter" "orchestration" {
-  parent = "accessPolicies/${google_access_context_manager_access_policy.access_policy.name}"
-  name   = "accessPolicies/${google_access_context_manager_access_policy.access_policy.name}/servicePerimeters/orchestration"
+  parent = "accessPolicies/${google_access_context_manager_access_policy.platform.name}"
+  name   = "accessPolicies/${google_access_context_manager_access_policy.platform.name}/servicePerimeters/orchestration"
   title  = "orchestration"
   status {
     restricted_services = local.restricted_services
@@ -34,8 +34,8 @@ resource "google_access_context_manager_service_perimeter" "orchestration" {
 }
 
 resource "google_access_context_manager_service_perimeter" "analytics" {
-  parent = "accessPolicies/${google_access_context_manager_access_policy.access_policy.name}"
-  name   = "accessPolicies/${google_access_context_manager_access_policy.access_policy.name}/servicePerimeters/analytics"
+  parent = "accessPolicies/${google_access_context_manager_access_policy.platform.name}"
+  name   = "accessPolicies/${google_access_context_manager_access_policy.platform.name}/servicePerimeters/analytics"
   title  = "analytics"
   status {
     restricted_services = local.restricted_services
@@ -48,8 +48,8 @@ resource "google_access_context_manager_service_perimeter" "analytics" {
 }
 
 resource "google_access_context_manager_service_perimeter" "orchestration_analytics_bridge" {
-  parent         = "accessPolicies/${google_access_context_manager_access_policy.access_policy.name}"
-  name           = "accessPolicies/${google_access_context_manager_access_policy.access_policy.name}/servicePerimeters/orchestration-analytics-bridge"
+  parent         = "accessPolicies/${google_access_context_manager_access_policy.platform.name}"
+  name           = "accessPolicies/${google_access_context_manager_access_policy.platform.name}/servicePerimeters/orchestration-analytics-bridge"
   title          = "orchestration-analytics-bridge"
   perimeter_type = "PERIMETER_TYPE_BRIDGE"
 
