@@ -30,7 +30,6 @@ locals {
     "cloudresourcemanager.googleapis.com",
     "logging.googleapis.com",
     "monitoring.googleapis.com",
-    "profiler.googleapis.com",
     "texttospeech.googleapis.com",
     "translate.googleapis.com",
     "cloudtrace.googleapis.com",
