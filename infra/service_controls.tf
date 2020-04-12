@@ -8,9 +8,11 @@ resource "google_access_context_manager_access_level" "default" {
   name   = "accessPolicies/${google_access_context_manager_access_policy.platform.name}/accessLevels/default"
   title  = "default"
   basic {
-    ip_subnetworks = [
-      "${var.inception_ip}"
-    ]
+    conditions {
+      ip_subnetworks = [
+        "${var.inception_ip}"
+      ]
+    }
   }
 
   depends_on = [google_access_context_manager_access_policy.platform]
