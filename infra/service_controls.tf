@@ -49,8 +49,8 @@ resource "google_access_context_manager_service_perimeter" "analytics" {
 
 resource "google_access_context_manager_service_perimeter" "orchestration_analytics_bridge" {
   parent         = "accessPolicies/${google_access_context_manager_access_policy.platform.name}"
-  name           = "accessPolicies/${google_access_context_manager_access_policy.platform.name}/servicePerimeters/orch-analytics-bridge"
-  title          = "orch-analytics-bridge"
+  name           = "accessPolicies/${google_access_context_manager_access_policy.platform.name}/servicePerimeters/oa-bridge"
+  title          = "oa-bridge"
   perimeter_type = "PERIMETER_TYPE_BRIDGE"
 
   depends_on = [
