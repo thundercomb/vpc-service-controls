@@ -18,7 +18,7 @@ resource "google_access_context_manager_access_level" "default" {
 
 resource "google_access_context_manager_access_level" "orchestration_cloud_build" {
   parent = "accessPolicies/${google_access_context_manager_access_policy.platform.name}"
-  name   = "accessPolicies/${google_access_context_manager_access_policy.platform.name}/accessLevels/orchestration-cloud-build"
+  name   = "accessPolicies/${google_access_context_manager_access_policy.platform.name}/accessLevels/orchestration_cloud_build"
   title  = "orchestration-cloud-build"
   basic {
     conditions {
