@@ -23,7 +23,7 @@ resource "google_access_context_manager_access_level" "orchestration_cloud_build
   basic {
     conditions {
       members = [
-        "serviceAccount:${var.inception_project_number}@cloudbuild.gserviceaccount.com"
+        "serviceAccount:${var.orchestration_project_number}@cloudbuild.gserviceaccount.com"
       ]
     }
   }
