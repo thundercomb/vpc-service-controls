@@ -21,7 +21,10 @@ steps:
   env:
   - "TF_VAR_org_id=${_ORG_ID}"
   - "GOOGLE_PROJECT=${PROJECT_ID}"
+  - "TF_VAR_orchestration_project_number=${_ORCHESTRATION_PROJECT_NUMBER}"
+  - "TF_VAR_analytics_project_number=${_ANALYTICS_PROJECT_NUMBER}"
   - "TF_VAR_inception_ip=${_INCEPTION_IP}"
+  - "TF_VAR_inception_user=${_INCEPTION_USER}"
 
 - id: 'Terraform apply'
   name: 'hashicorp/terraform'
@@ -34,6 +37,9 @@ steps:
   env:
   - "TF_VAR_org_id=${_ORG_ID}"
   - "GOOGLE_PROJECT=${PROJECT_ID}"
+  - "TF_VAR_orchestration_project_number=${_ORCHESTRATION_PROJECT_NUMBER}"
+  - "TF_VAR_analytics_project_number=${_ANALYTICS_PROJECT_NUMBER}"
   - "TF_VAR_inception_ip=${_INCEPTION_IP}"
+  - "TF_VAR_inception_user=${_INCEPTION_USER}"
 
 timeout: 1800s
