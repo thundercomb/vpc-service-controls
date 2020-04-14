@@ -30,3 +30,18 @@ resource "google_access_context_manager_access_level" "orchestration_cloud_build
 
   depends_on = [google_access_context_manager_access_policy.platform]
 }
+
+resource "google_access_context_manager_access_level" "analytics_appengine" {
+  parent = "accessPolicies/${google_access_context_manager_access_policy.platform.name}"
+  name   = "accessPolicies/${google_access_context_manager_access_policy.platform.name}/accessLevels/analytics_appengine"
+  title  = "analytics-appengine"
+  basic {
+    conditions {
+      members = [
+        "serviceAccount:${var.analytics_project_id}@appspot.gserviceaccount.com"
+      ]
+    }
+  }
+
+  depends_on = [google_access_context_manager_access_policy.platform]
+}

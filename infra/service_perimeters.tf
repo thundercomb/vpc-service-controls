@@ -31,6 +31,7 @@ resource "google_access_context_manager_service_perimeter" "analytics" {
     access_levels = [
       google_access_context_manager_access_level.default.name,
       google_access_context_manager_access_level.orchestration_cloud_build.name
+      google_access_context_manager_access_level.analytics_appengine.name
     ]
   }
 
