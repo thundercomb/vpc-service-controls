@@ -31,14 +31,17 @@ resource "google_access_context_manager_service_perimeter" "analytics" {
     access_levels = [
       google_access_context_manager_access_level.default.name,
       google_access_context_manager_access_level.orchestration_cloud_build.name,
-      google_access_context_manager_access_level.analytics_appengine.name
+      google_access_context_manager_access_level.analytics_appengine.name,
+      google_access_context_manager_access_level.analytics_ai_platform.name
     ]
   }
 
   depends_on = [
     google_access_context_manager_access_policy.platform,
     google_access_context_manager_access_level.default,
-    google_access_context_manager_access_level.orchestration_cloud_build
+    google_access_context_manager_access_level.orchestration_cloud_build,
+    google_access_context_manager_access_level.analytics_appengine,
+    google_access_context_manager_access_level.analytics_ai_platform
   ]
 }
 

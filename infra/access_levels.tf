@@ -45,3 +45,18 @@ resource "google_access_context_manager_access_level" "analytics_appengine" {
 
   depends_on = [google_access_context_manager_access_policy.platform]
 }
+
+resource "google_access_context_manager_access_level" "analytics_ai_platform" {
+  parent = "accessPolicies/${google_access_context_manager_access_policy.platform.name}"
+  name   = "accessPolicies/${google_access_context_manager_access_policy.platform.name}/accessLevels/analytics_ai_platform"
+  title  = "analytics-ai-platform"
+  basic {
+    conditions {
+      members = [
+        "serviceAccount:service-${var.analytics_project_id}@cloud-ml.google.com.iam.gserviceaccount.com
+      ]
+    }
+  }
+
+  depends_on = [google_access_context_manager_access_policy.platform]
+}
