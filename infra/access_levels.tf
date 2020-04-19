@@ -53,7 +53,7 @@ resource "google_access_context_manager_access_level" "analytics_ai_platform" {
   basic {
     conditions {
       members = [
-        "serviceAccount:service-${var.analytics_project_id}@cloud-ml.google.com.iam.gserviceaccount.com"
+        "serviceAccount:service-${var.analytics_project_number}@cloud-ml.google.com.iam.gserviceaccount.com"
       ]
     }
   }
